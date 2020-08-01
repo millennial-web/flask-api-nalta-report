@@ -5,8 +5,11 @@ import pymongo
 import json
 import os
 
+
+engine_string = os.environ.get('MONGODB_URI', '')
+
 def import_content(filepath):
-    mng_client = pymongo.MongoClient('localhost', 27017)
+    mng_client = pymongo.MongoClient(engine_string)
     mng_db = mng_client['accidents_mx']
     collection_name = 'accidents'
     
